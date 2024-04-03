@@ -12,33 +12,24 @@ public class Main {
         }
         System.out.println("Самая длинная оттепель длилась " + printFromX(mass1));
     }
+
     public static int printFromX(int[] m) {
         int returningValue1 = 0;
-        int countPlusTemp=0;
-        for (int i = 0; i < m.length-1; i++) {
-            if (sravn(m[i], 0))
+        int countPlusTemp = 0;
+        for (int i = 0; i < m.length; i++) {
+            if (m[i] > 0) {
                 countPlusTemp++;
+                if (i==m.length-1)
+                    if(countPlusTemp>returningValue1)
+                    returningValue1 = countPlusTemp;
+            }
             else {
-                if (countPlusTemp >= returningValue1) {
+                if (countPlusTemp > returningValue1) {
                     returningValue1 = countPlusTemp;
                     countPlusTemp = 0;
                 }
             }
         }
-        for (int j = m.length-1; j <m.length ; j++) {
-            if (sravn(m[j], 0))
-                countPlusTemp++;
-                if (countPlusTemp > returningValue1){
-                returningValue1 = countPlusTemp;
-            }
-            else {
-                if (countPlusTemp >= returningValue1)
-                    returningValue1 = countPlusTemp;
-            }
-        }
         return returningValue1;
-    }
-    public static boolean sravn(int x, int y) {
-        return x > y;
     }
 }
