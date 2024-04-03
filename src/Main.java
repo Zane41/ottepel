@@ -17,30 +17,34 @@ public class Main {
 
     }
 
-//сделал задачу оттепель, надо: довести до ума функцию счетчика оттепели
+
     public static int printFromX(int[] m) {
 
         int returningValue1 = 0;
         int countPlusTemp=0;
         for (int i = 0; i < m.length; i++) {
-            int bufer;
             if (sravn(m[i], 0))
                 countPlusTemp++;
             else {
-                bufer = countPlusTemp; countPlusTemp=0;
-                if (bufer > returningValue1)
-                    returningValue1 = bufer;
+                if (countPlusTemp > returningValue1){
+                    returningValue1 = countPlusTemp; countPlusTemp=0;
+                }
             }
-            bufer =0;
+            if (i==m.length-1)
+                if (sravn(m[i], 0)) {
+                    returningValue1 = countPlusTemp;
+                }
+                else {
+                    if (countPlusTemp > returningValue1){
+                        returningValue1 = countPlusTemp; countPlusTemp=0;
+                    }
+                }
         }
         return returningValue1;
     }
 
     public static boolean sravn(int x, int y) {
-        if (x > y)
-        return true;
-        else
-        return false;
+        return x > y;
     }
 
 
