@@ -15,18 +15,26 @@ public class Main {
     public static int printFromX(int[] m) {
         int returningValue1 = 0;
         int countPlusTemp=0;
-        for (int i = 0; i < m.length; i++) {
+        for (int i = 0; i < m.length-1; i++) {
             if (sravn(m[i], 0))
                 countPlusTemp++;
             else {
-                if (countPlusTemp >= returningValue1){
-                    returningValue1 = countPlusTemp; countPlusTemp=0;
+                if (countPlusTemp >= returningValue1) {
+                    returningValue1 = countPlusTemp;
+                    countPlusTemp = 0;
                 }
             }
-            if (i==m.length-1)
+        }
+        for (int j = m.length-1; j <m.length ; j++) {
+            if (sravn(m[j], 0))
+                countPlusTemp++;
                 if (countPlusTemp > returningValue1){
-                   returningValue1 = countPlusTemp;
-                }
+                returningValue1 = countPlusTemp;
+            }
+            else {
+                if (countPlusTemp >= returningValue1)
+                    returningValue1 = countPlusTemp;
+            }
         }
         return returningValue1;
     }
